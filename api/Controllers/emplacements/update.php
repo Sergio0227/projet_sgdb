@@ -4,13 +4,13 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once __DIR__ . '/../../../config/db_connect.php';
-require_once __DIR__ . '/../../Models/tools/any_table.php';
+require_once __DIR__ . '/../../Models/emplacements.php';
 
 
 $db = new Database();
 $db = $db->connect();
 
-$emplacement = new AnyTable($db, 'emplacements', 'id', $id);
+$emplacement = new Emplacement($db, 'emplacements', 'id', $id);
 $data = json_decode(file_get_contents("php://input"));
 
 

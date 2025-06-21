@@ -9,16 +9,6 @@ class AnyTable
     public $identValue = '';
     public $fields = [];
 
-    /* 	
-          Constructeur
-        ------------
-        $db : bases de données -> string
-        $table : table -> string
-        $identName : nom de la clé primaire (optionnel : uniquement utilisable pour fetchOne et delete)
-        $identValue : valeur de la clé primaire (optionnel : uniquement utilisable avec fectOne et delete)
-        $fields : noms des champs de la table -> array associatif (optionnel uniquement utilisable avec postData et putData)
-    
-    */
 
     public function __construct($db, $table = '', $identName = '', $identValue = '', $fields = [])
     {
@@ -30,7 +20,6 @@ class AnyTable
     }
 
 
-    //Récupérer tout les enregistrement d'une table
     public function fetchAll()
     {
         $stmt = $this->conn->prepare('SELECT * FROM ' . $this->table);

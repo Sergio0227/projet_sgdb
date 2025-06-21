@@ -1,13 +1,13 @@
 <?php
 
 require_once __DIR__ . '/../../../config/db_connect.php';
-require_once __DIR__ . '/../../Models/tools/any_table.php';
+require_once __DIR__ . '/../../Models/emplacements.php';
 
 
 $db = new Database();
 $db = $db->connect();
 
-$emplacement = new AnyTable($db, 'emplacements');
+$emplacement = new Emplacement($db, 'emplacements');
 
 $res = $emplacement->fetchAll();
 $resCount = $res->rowCount();
@@ -16,10 +16,20 @@ if ($resCount > 0) {
 
     $arr = array();
     while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
-        $arr[] = ['emplacement' => $row, 'request' => 'GET', 'url' => 'http://localhost/sgdb_api/emplacements.php?id=' .$row['id']];
+        $arr[] = $row;
     }
-    echo json_encode($arr);
+    $arr = $emplacement->buildTree($arr);
 
+    $wrappedArr = [];
+    foreach ($arr as $node) {
+        $wrappedArr[] = [
+            'request' => $node,
+            'method' => 'GET',
+            'URL' => 'http://localhost/sgdb_api/emplacements.php?id=' . $node['id']
+        ];
+    }
+
+    echo json_encode($wrappedArr);
 
 } else {
     echo json_encode(array('message' => "No records found!"));
