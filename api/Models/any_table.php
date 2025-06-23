@@ -1,6 +1,9 @@
 <?php
 
-class AnyTable
+namespace SGDB_API\Models;
+use PDO;
+
+class any_table
 {
 
     protected $conn;

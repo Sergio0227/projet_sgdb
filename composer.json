@@ -1,0 +1,14 @@
+{
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "SGDB_API\\config\\": "config/",
+      "SGDB_API\\Controllers\\": "api/Controllers/",
+      "SGDB_API\\Routes\\": "Routes/",
+      "SGDB_API\\Models\\": "api/Models/"
+    }
+  },
+  "require": {
+    "ext-pdo": "*"
+  }
+}

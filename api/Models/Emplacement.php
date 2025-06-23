@@ -1,8 +1,10 @@
 <?php
 
-require_once __DIR__ . '/tools/any_table.php';
+namespace SGDB_API\Models;
 
-class Emplacement extends AnyTable
+use SGDB_API\Models\any_table;
+
+class Emplacement extends any_table
 {
     function buildTree($elements)
     {

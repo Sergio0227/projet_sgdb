@@ -1,5 +1,2 @@
-RewriteEngine On
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^([A-Za-z0-9_]+)\.php$ Routes/$1.php [L]
+RewriteEngine on
+RewriteRule ^(.*)$ index.php [QSA]

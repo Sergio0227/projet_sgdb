@@ -1,10 +1,12 @@
 <?php
 
-class Database
+namespace SGDB_API\config;
+
+class Db_connect
 {
     public static function connect(): ?\PDO
     {
-        $config = require __DIR__ . '/db_config.php';
+        $config = require __DIR__ . '/Db_config.php';
 
         $dsn = "mysql:host={$config['host']};dbname={$config['dbname']}";
 
